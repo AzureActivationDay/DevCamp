@@ -52,10 +52,8 @@ Now that your development environment is set up, you can start building and runn
 
 - [Create your first Service Fabric application in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 - [Learn how to deploy and manage applications on your local cluster](service-fabric-get-started-with-a-local-cluster.md)
-- [Learn about the programming models: Reliable Services and Reliable Actors](service-fabric-choose-framework.md)
-- [Check out the Service Fabric code samples on GitHub](https://aka.ms/servicefabricsamples)
 - [Visualize your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
-- [Follow the Service Fabric learning path to get a broad introduction to the platform](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
+
 
 [1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric campaign page"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
