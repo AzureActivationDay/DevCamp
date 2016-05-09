@@ -39,21 +39,18 @@
                   <tr>
                      <td>9:30 - 9:45</td>
                      <td>[HOL - Setup & Sign up & Explore Azure Management Portal](HOL/creating-azure-account-activating-msdn-benefits/)</td>
-                 
                   </tr>
                   <tr>
                      <td>Break</td>
                      <td>9:45 - 9:55</td>
                      <td></td>
                   </tr>
-                  
-                  <tr>
+                   <tr>
                      <td rowspan=3>App Service</td>
                      <td>10:00 - 10:15</td>
                      <td>[Presentation](Presentation/App-Service/App Service.pptx) | [Demos](Presentation/App-Service/)</td>
                   </tr>
-                 
-                  <tr>
+                 <tr>
                      <td>10:15 - 11:00</td>
                      <td>[HOL - Deploy a Web App to Azure](HOL/get-started-with-websites-and-asp-net/)</td>
                   </tr>
@@ -75,8 +72,7 @@
                      <td>12:00 - 12:30</td>
                      <td></td>
                   </tr>
-                  
-                   <tr>
+                  <tr>
                      <td rowspan=3>Azure Service Fabric</td>
                      <td>12:30 - 12:45</td>
                      <td>[Presentation](Presentation/Service-Fabric/Service Fabric Overview.pptx) | [Demos](Presentation/Service-Fabric/)</td>
