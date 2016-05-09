@@ -10,9 +10,8 @@
       <div class="container">
          <div class="jumbotron">
             <h1>Azure Activation Day 2016</h1>
-            <p>February 2016 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
-               <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
+               <a href="https://azure.microsoft.com/en-us/pricing/free-trial/" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
             <div class="hidden">_We strongly recommend that presenters and camp attendees **run the [Installer](https://github.com/Azure-Readiness/DevCamp/releases/latest)** 
             rather than clone this repository. The installer is optimized for end users - it includes all NuGet packages, HTML documentation, etc._</div>
