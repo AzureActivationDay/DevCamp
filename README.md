@@ -61,7 +61,7 @@
                   </tr>
                   <tr>
                      <td rowspan=2>11:15 - 12:00</td>
-                     <td>[HOL - DocumentDB *or*](HOL/build-web-app-using-documentdb/)</td>
+                     <td>[HOL - DocumentDB](HOL/build-web-app-using-documentdb/)</td>
                   </tr>
                   <tr></tr>
                   <tr>
@@ -76,7 +76,7 @@
                   </tr>
                   <tr>
                      <td rowspan=2>12:45 - 1:30</td>
-                     <td>[HOL - DocumentDB](HOL/service-fabric/service-fabric-create-your-first-application-in-visual-studio/)</td>
+                     <td>[HOL - Service Fabric](HOL/service-fabric/)</td>
                   </tr>
                   <tr>
                      <td></td>
