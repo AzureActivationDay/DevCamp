@@ -90,10 +90,8 @@
                      <td>[Presentation](Presentation/Devtest-Labs/Azure Dev Test Labs.pptx)</td>
                   </tr>
                </table>
-               
             </div>
          </div>
-        
       </div>
    </body>
 </html>
