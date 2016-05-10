@@ -213,13 +213,9 @@ PS D:\temp>
 
 ## Next steps
 
-[Service Fabric application upgrade](service-fabric-application-upgrade.md)
 
-[Service Fabric health introduction](service-fabric-health-introduction.md)
-
-[Diagnose and troubleshoot a Service Fabric service](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-
-[Model an application in Service Fabric](service-fabric-application-model.md)
+[Deploy an application](service-fabric-deploy-remove-applications.md)
+[Application upgrade](service-fabric-application-upgrade.md)
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md

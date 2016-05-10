@@ -128,8 +128,9 @@ You are also able to stream traces directly from a remote cluster node to Visual
 
 ## Next steps
 
-- [Test a Service Fabric service](service-fabric-testability-overview.md).
-- [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+-[Deploy an application](service-fabric-deploy-remove-applications.md)
+
+-[Application upgrade](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

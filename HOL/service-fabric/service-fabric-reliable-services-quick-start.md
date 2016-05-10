@@ -202,14 +202,10 @@ After the services start running, you can view the generated Event Tracing for W
 
 ## Next steps
 
-[Debug your Service Fabric application in Visual Studio](service-fabric-debugging-your-application.md)
+[1.Debug your Service Fabric application in Visual Studio](service-fabric-debugging-your-application.md)
 
-[Get started: Service Fabric Web API services with OWIN self-hosting](service-fabric-reliable-services-communication-webapi.md)
+[2.Deploy an application](service-fabric-deploy-remove-applications.md)
 
-[Learn more about Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+[3.Application upgrade](service-fabric-application-upgrade.md)
 
-[Deploy an application](service-fabric-deploy-remove-applications.md)
 
-[Application upgrade](service-fabric-application-upgrade.md)
-
-[Developer reference for Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
