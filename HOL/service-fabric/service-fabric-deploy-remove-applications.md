@@ -214,7 +214,6 @@ PS D:\temp>
 ## Next steps
 
 
-[Deploy an application](service-fabric-deploy-remove-applications.md)
 [Application upgrade](service-fabric-application-upgrade.md)
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
