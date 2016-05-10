@@ -128,9 +128,9 @@ You are also able to stream traces directly from a remote cluster node to Visual
 
 ## Next steps
 
--[Deploy an application](service-fabric-deploy-remove-applications.md)
+[2.Deploy an application](service-fabric-deploy-remove-applications.md)
 
--[Application upgrade](service-fabric-application-upgrade.md)
+[3.Application upgrade](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

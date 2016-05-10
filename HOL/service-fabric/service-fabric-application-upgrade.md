@@ -52,20 +52,8 @@ The flowchart below can help you understand the upgrade process of a Service Fab
 ![The upgrade process for a Service Fabric Application][image]
 
 
-## Next steps
+## End of Lab
 
-[Uprading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
-
-[Uprading your Application Using Powershell](service-fabric-application-upgrade-tutorial-powershell.md) walks you through an application upgrade using PowerShell.
-
-Control how your application upgrades by using [Upgrade Parameters](service-fabric-application-upgrade-parameters.md).
-
-Make your application upgrades compatible by learning how to use [Data Serialization](service-fabric-application-upgrade-data-serialization.md).
-
-Learn how to use advanced functionality while upgrading your application by referring to [Advanced Topics](service-fabric-application-upgrade-advanced.md).
-
-Fix common problems in application upgrades by referring to the steps in [Troubleshooting Application Upgrades ](service-fabric-application-upgrade-troubleshooting.md).
- 
 
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
