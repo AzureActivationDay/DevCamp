@@ -199,8 +199,9 @@ After the services start running, you can view the generated Event Tracing for W
 
 ![View Diagnostic Events in Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
+That is the end of this lab, please see recommended reading section to learn further.
 
-## Next steps
+## Recommended Reading
 
 [1.Debug your Service Fabric application in Visual Studio](service-fabric-debugging-your-application.md)
 
