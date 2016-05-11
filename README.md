@@ -13,9 +13,6 @@
             <p>
                <a href="https://azure.microsoft.com/en-us/pricing/free-trial/" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
-            <div class="hidden">_We strongly recommend that presenters and camp attendees **run the [Installer](https://github.com/Azure-Readiness/DevCamp/releases/latest)** 
-            rather than clone this repository. The installer is optimized for end users - it includes all NuGet packages, HTML documentation, etc._</div>
-         </div>
          <div class="panel panel-default">
             <div class="panel-heading">
                <h3 class="panel-title">Suggested agenda for a one day Azure Camp with Hands On Labs (HOLs)</h3>

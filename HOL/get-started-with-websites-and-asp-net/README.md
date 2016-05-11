@@ -33,35 +33,23 @@ In this task you will create the web application that is going to be used throug
 
 4. In the **New ASP.NET Project** dialog box, select the **MVC** template. Verify **Authentication** is set to **Individual User Accounts**, **Host in the cloud** is checked and **Web App** is selected. Then, click **OK**.
 
-	![New ASP.NET Project dialog box](./images/newProject-dialog-2.png)
+	![New ASP.NET Project dialog box](./images/newProject-dialog-2new.png)
 
     _New ASP.NET Project dialog box_
 
-5. Once the application is selected you will get a pop-up to enter details for **Creating an App Service**. Once you enter the details like: WebApp Name, Subsciption, Resource Group(if you have created earlier, if not create a Resource Group in Azure Portal and the list will be populated. Select the resource group)
+5. Once the application is selected you will get a pop-up to enter details for **Creating an Web App**. Once you enter the details like: WebApp Name, Subsciption, Resource Group(if you have created earlier, if not create a Resource Group in Azure Portal and the list will be populated. Select the resource group)
 
-	![Creating App Service](./images/configure-azure1.png)
+	![Creating App Service](./images/configure-azure1new.png)
 
     _Details for Creating App Service_
 
-6. Click on **New** button under **App Service Plan**. In a Service plan we can select **App Service Plan** Name, **Location**, **Size**(can be Free, Shared(paid), and different configurations)
-
-	![Configure Azure Web App - App Serive Plan](./images/configure-azure-app-service-plan.png)
-
-    _Configure Azure Web App - App Serive Plan_
-	
-7. Once the Service Plan is selected, select **Create**	to create a **Web App Service**. 
-
-	![Configure Azure Web App - App Serive Plan](./images/configure-azure2.png)
-
-    _Configure Azure Web App - App Serive Plan_
-	
-8. As the application was created in Azure App Services, you can verify to your azure portal and check under the App Services Section you will have Contact Manager application hosted or navigate to the URL it will be **LIVE**
+6. As the application was created in Azure App Services, you can verify to your azure portal and check under the App Services Section you will have Contact Manager application hosted or navigate to the URL it will be **LIVE**
 
 	![Configure Azure Web App - App Serive Plan](./images/create-website-2.png)
 
     _Created App Services - Web App_
 	
-8. Once the App Service is created we are ready to publish the ASP.NET Application code, click on **Publish contactmanager to this web app now**	
+7. Once the App Service is created we are ready to publish the ASP.NET Application code, click on **Publish contactmanager to this web app now**	
 
 	![Configure Azure Web App - App Serive Plan](./images/create-appservice-webapp.png)
 

@@ -1,0 +1,120 @@
+Best introduction
+http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/12/07/intro-to-azure-documentdb.aspx
+
+
+1.rows have limit of 512 k
+2.no concept of CUs now
+3. cant selectively update a field, need the whole document out and then update.
+4. keep your documents small. 
+5.collection in documentdb is not the same as collection in mongodb or ravendb. mongodb's documentation talks about collection as kind of table and row as kind of document, this is where document db differs, you can store different types of documents in the same collection.please dont use collections like one collection ==customer, one collection==order, because then you will end up with like 100s of collections and cost will not truly reflect that.
+6. document db starts at pricing around collection starting at 3cs an hour.
+7.database in document db is a logical container, it is not a physical thing, it is like grouping the collections and users and permissions together.
+Collection is a physical allocation of resources. when you create a collection, a node is allocated and cpu, memory,disk and network io is invovled. MS makes sure that you get the fix amount of CPU, memory, disk and network based on your subscription, it avoids noisy neighbour problem. if you are querying a data and not sure which collection the data is then you may have to do a fan out query.
+Collection is also a scope for queries. you cant query across collection
+8.optimised for smaller documents than larger documents. a collection could span a 1000 nodes . a smaller document can be much more efficient in terms of network and disk IO for a bigger collection. it can also be parallelized.
+documentdb's json as json tree.
+document db's default indexing strategy is to index everything. i.e. consistent, you can get fancy and go for lazy if you know your data really well and you know you are ever going to query only on few properties. you can also include index paths and exclude index paths. indexing for large inserts keeps up and based on what microsoft has found, they have not seen any issues but say you have a scenario where you are doing inserts in bulk, like a bulk upload etc and if it is not important for you to be able to query immediately then you can go for lazy.
+
+you can also turn off indexing mechanism from automatic and only selectively index when you perform create statement, this scenario is good when you only want to index certain document and not other
+
+Multi-tenancy 
+http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx
+
+
+
+Consistency
+  (Writes to primary replicaa), reads from seconday replicas
+1. Strong- 
+   Client always sees completely consistent data
+   Slowest reads/writes
+   Mission critical:e.x. stock market, banking, airline reservation
+
+2.Session
+   (default) 
+   Even trade off between performance and availability vs data correctness
+   Client reads its own writes, but other clients reading this same data might see older    values.
+3. Bounded Staleness
+      Client might see old data, but it can specify a limit for how old that data can be (e.x. 2 seconds)
+      Updates happen in order received.
+      Simliar to session consistency, but speeds up reads while still preserving the order of updates.
+
+4.  Eventual consistency:
+     Client might see old data for as long as it takes a write to propagate to all replicas
+    High performance & availability, but a client might sometimes read out-of-date information or see updates out of order
+
+
+
+DocumentDB Indexing:
+1.Flexible - auto-indexing supports schema-less query
+2.Support relational and hierarchical "path" queries
+3. Support consistent queries in face of writes
+4. Support multi-tenancy
+5. Storage efficient
+6. Tunable through policies for best tradeoffs.
+    Automatic vs Manual
+    Include / exclude Index Paths
+    Index Types (hash and range) and precision
+    Index modes (Lazy and Consistent)
+
+
+Setting consistency
+   At the database level (see preview portal)
+   On a per-read or per query basis (optional parameter on CreateDocumentQuery method)
+
+
+Performance tip: use direct connection- tcp
+ (only available in .NET sdk currently)
+ one less hop so fast.
+  var serviceEndpoint = new Uri("https://contoso.documents.net");
+            var authKey = new "your authKey from Azure Mngt Portal";
+            DocumentClient client = new DocumentClient(serviceEndpoint, authKey, 
+            new ConnectionPolicy
+            {
+                ConnectionMode = ConnectionMode.Direct,
+                ConnectionProtocol = Protocol.Tcp
+            });
+ 
+Tip #1 Connection Policy – Use direct connection mode for better performance
+Tip #2 Connection Policy – Use TCP protocol for better performance
+Tip #3: Call OpenAsync to avoid startup latency on first request
+TIP #4: Collocate clients in same Azure region for performance
+SDK usage
+Tip #1 Use a singleton DocumentDB client for the lifetime of your application
+Tip #2 Cache document and collection SelfLinks for lower read latency
+Tip #3: Tune page size for queries/read feeds for better performance
+
+Indexing Policy
+Tip #1 Use lazy indexing for faster peak time ingestion rates
+Tip #2 Exclude unused paths from indexing for faster writes
+Tip #3 Vary index precision for write vs query performance vs storage tradeoffs.
+
+Throughput
+Tip #1 Measure and Tune for lower request units/second usage
+Tip #2: Handle Server throttles/request rate too large 
+         When you are throttled, you receive Http Status 429, Status Line RequestRateTooLarge, x-ms-retry-after-ms:100. You dont have to deal with this exception if you are using .NET Client SDK. Only when a client cumulatively operating consistently above the request rate then it will throw the documentclient exception.
+Tip #3: Delete empty collections to utilize all provisioned throughput
+
+Consistency Levels
+Tip #1 Use Weaker consistency levels for better read latencies
+
+
+
+DateTime Treatments:
+select a.Books from authors a join
+d in a.Books
+where d.PublishedOn = "1996-08-06T00:00:00"
+
+select c.Name,c.Surname, d.Title,d.Genre,d.PublishedOn,d.Price from c join d in c.Books
+where d.PublishedOn = "1996-08-06T00:00:00"
+
+DocumentDB Server side
+
+Context Object
+
+Request Object
+
+Response Object
+
+Collection Object
+
+
