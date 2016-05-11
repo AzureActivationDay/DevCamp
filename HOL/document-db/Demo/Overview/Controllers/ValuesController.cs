@@ -14,7 +14,7 @@ namespace Overview.Controllers
     public class ValuesController : ApiController
     {
 
-        public ValuesController():this(new ValuesDocumentRepository(new DocumentClientFactory().GetInstance()))
+        public ValuesController():this(new ValuesDocumentRepository(DocumentClientFactory.Instance))
         {
             
         }
@@ -41,7 +41,7 @@ namespace Overview.Controllers
         public async Task<IHttpActionResult> Post(Values value)
         {
             var selfLink=await _valuesRepository.Add(value);
-            return Created(new Uri(selfLink), "New Environment Created");
+            return Created(selfLink, "New Environment Created");
         }
 
         // PUT api/values/5

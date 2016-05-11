@@ -94,17 +94,65 @@ namespace Overview.Repositories
         private static readonly string collectionId = ConfigurationManager.AppSettings["CollectionId"];
 
         private readonly DocumentClient _documentClient;
-        public ValuesDocumentRepository(DocumentClient documentClient)
+        private readonly Database _database;
+        private readonly DocumentCollection _collection;
+        //static ValuesDocumentRepository()
+        //{
+        //    string endpoint = ConfigurationManager.AppSettings["EndPointUrl"];
+        //    string authKey = ConfigurationManager.AppSettings["AuthorizationKey"];
+
+        //    Uri endpointUri = new Uri(endpoint);
+        //    _documentClient = new DocumentClient(endpointUri,authKey);
+        //    if (_database == null)
+        //    {
+        //        _database = ReadOrCreateDatabase();
+        //    }
+        //}
+
+        public ValuesDocumentRepository(DocumentClient client)
         {
-            _documentClient = documentClient;
+            _documentClient = client;
+            _database = ReadOrCreateDatabase();
+            _collection = ReadOrCreateCollection(_database.SelfLink);
         }
+
+        private Database ReadOrCreateDatabase()
+        {
+            var db = _documentClient.CreateDatabaseQuery()
+                                 .Where(d => d.Id == databaseId)
+                                 .AsEnumerable()
+                                 .FirstOrDefault();
+
+            if (db == null)
+            {
+                db = _documentClient.CreateDatabaseAsync(new Database { Id = databaseId }).ConfigureAwait(false).GetAwaiter().GetResult();
+            }
+
+            return db;
+        }
+
+        private DocumentCollection ReadOrCreateCollection(string databaseLink)
+        {
+            var col = _documentClient.CreateDocumentCollectionQuery(databaseLink)
+                                    .Where(c => c.Id == collectionId)
+                                    .AsEnumerable()
+                                    .FirstOrDefault();
+
+            if (col == null)
+            {
+                col = _documentClient.CreateDocumentCollectionAsync(databaseLink, new DocumentCollection { Id = collectionId }).ConfigureAwait(false).GetAwaiter().GetResult();
+            }
+
+            return col;
+        }
+
 
         public Task<IEnumerable<Values>> GetAll()
         {
             var feedOptions=new FeedOptions {MaxItemCount = 1000};
 
             var query = _documentClient.CreateDocumentQuery<Values>(
-                        GetCollectionSelfLink(), feedOptions)
+                        _collection.SelfLink, feedOptions)
                         .Where(x=>x.name!=null).AsEnumerable(); //we make sure that value is the only valid type that is returned
                                                                 //if collection has various other types of schema.
                                                                 //may be a docmentType should be inserted to identify the document type
@@ -120,16 +168,7 @@ namespace Overview.Repositories
             //here we are assuming that name is used as qualifier to indicate that the document is of type value if name is present.
             return Task.FromResult(response.AsEnumerable());
         }
-
-        private string GetCollectionSelfLink()
-        {
-            DocumentCollection dc = _documentClient.CreateDocumentCollectionQuery(GetDbLink())
-                .Where(x => x.Id == collectionId)
-                .AsEnumerable()
-                .FirstOrDefault();
-            return dc.SelfLink;
-        }
-
+        
         private string GetDbLink()
         {
             Database db = _documentClient
@@ -137,6 +176,11 @@ namespace Overview.Repositories
                 .Where(x => x.Id == databaseId)
                 .AsEnumerable()
                 .FirstOrDefault();
+
+            if (db==null)
+            {
+                return string.Empty;
+            }
 
             return db.SelfLink;
         }
@@ -188,8 +232,8 @@ namespace Overview.Repositories
             //    .Where(x => x.Id == id)
             //    .AsDocumentQuery();
             //return query;
-
-            dynamic doc = _documentClient.CreateDocumentQuery<Document>(GetCollectionSelfLink())
+            
+            dynamic doc = _documentClient.CreateDocumentQuery<Document>(_collection.SelfLink)
                 .Where(d => d.Id == id).AsEnumerable().FirstOrDefault();
 
             return doc;
@@ -199,7 +243,7 @@ namespace Overview.Repositories
         public async Task<IEnumerable<Values>> GetAll(Expression<Func<Values,int,bool>> valueExpression)
         {
             var query = _documentClient.CreateDocumentQuery<Values>(
-                       GetCollectionSelfLink())
+                       _collection.SelfLink)
                        .Where(valueExpression)
                        .AsDocumentQuery();
 
@@ -216,11 +260,10 @@ namespace Overview.Repositories
             //Access permissions
             //options.AccessCondition=new AccessCondition();
             //options.IndexingDirective=new IndexingDirective();
-
-
+            
             try
             {
-                ResourceResponse<Document> response=await _documentClient.CreateDocumentAsync(GetCollectionSelfLink(), value, options, true);
+                ResourceResponse<Document> response=await _documentClient.CreateDocumentAsync(_collection.SelfLink, value, options, true);
                 return response.Resource.SelfLink;
             }
             catch (DocumentClientException de)
@@ -291,6 +334,8 @@ namespace Overview.Repositories
         }
     }
 
+    
+
     public class DocumentClientFactory:IDisposable
     {
         private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -306,6 +351,19 @@ namespace Overview.Repositories
         public DocumentClient GetInstance()
         {
             return _documentClient;
+        }
+
+        private static DocumentClient _documentClientStatic;
+        public static DocumentClient Instance
+        {
+            get
+            {
+                if (_documentClientStatic == null)
+                {
+                    _documentClientStatic = new DocumentClientFactory().GetInstance();
+                }
+                return _documentClientStatic;
+            }
         }
 
         public void Dispose()
