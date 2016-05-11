@@ -1,72 +1,163 @@
-Ensure SDK with VS2015 templates are installed.
-Create a word count service locally
-Create cluster on windows azure
-Deploy it on to the 
+------------------
+Azure Web App Demo
+----------
+SQL Database 
+
+Connection string: 
+Server=tcp:msreadifydemo.database.windows.net,1433;Database=contactmanagerdemo;User ID=msdemouser@msreadifydemo;Password=Password123!;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+-------------------
+Contact Manager URL
+------------------
+
+Solution: C:\source\DevCamp\HOL\get-started-with-websites-and-asp-net\EndSolution\ContactManager
+
+//if SQL server firewall blocks you
+//Ensure Clifton's ip address is included in the "SQL Servers" -> Settings->Firewall
+
+http://contactmanager4855.azurewebsites.net/
+
+
+-------------------
+Service Fabric Demo
+--------------------
+Service Fabric Cluster:- 
+    Myazurecluster.australiaeast.cloudapp.azure.com
+	msdemouser/Password123!
+
+Resource Group Name
+	Sfcluster4doc
+
+--------------------------------------
+Demo : 1  (Deploy Alphabet partitions)
+--------------------------------------
+
+Login to powershell as administrator and run following cmdlet
+(1). Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\Scripts\DefaultLocalClusterSetup.psm1'; Set-LocalClusterReady
+
+   or
+
+   (1). //Start the cluster using Visual studio press F5. (if not started already)
+
+
+(2) Navigate & show around the cluster
+	http://localhost:19080/Explorer/index.html#/
+
+(3) Demo Alphabet Partitions application : http://localhost:8081/alphabetpartitions?lastname=desai2
+      location: C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions
+
+(4) Word Count application :  http://localhost:8081/WordCount/api/Count
+      location: C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount
 
 
 
+(Only if the time permit)
 
+-----------------------------------------------
+Deploy Word count application to local cluster
+-----------------------------------------------
 
-[2.Deploy an application](service-fabric-deploy-remove-applications.md)
+------
+Step:1 - connect to localcluster
+------
 
-[3.Application upgrade](service-fabric-application-upgrade.md)
-
-C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions
-
-
-//Connect to localhost
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 
-//Deploying the application
-C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Local.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+------
+Step:2 - Deploy wordcount app local cluster
+------
+(make a change, package it)
 
-Example:1
-http://localhost:8081/alphabetpartitions?lastname=desai
+C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\PublishProfiles\Local.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+
+------
+Step:3 - Navigate to URL and observe
+------
+http://localhost:8081/WordCount
+http://localhost:8081/WordCount/api/Count
+
+//fiddler, use post verb
+http://localhost:8081/WordCount/api/AddWord/test
 
 
+-----------------------------------------------------------------------
+Deploy on Azure - myazurecluster.australiaeast.cloudapp.azure.com:19000
+-----------------------------------------------------------------------
 
-Deploy on Azure
-
-//Change the Cloud.xml by adding this endpoint details
-myazurecluster.australiaeast.cloudapp.azure.com:19000
-
-
+//Connect to remote cluster
 Connect-ServiceFabricCluster -ConnectionEndpoint myazurecluster.australiaeast.cloudapp.azure.com:19000
 
-C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
-
-Service Fabric Explorer
-http://myazurecluster.australiaeast.cloudapp.azure.com:19080/Explorer/index.html
-
-//Deploy another application to Azure
+-----------------------------------------------------
+Deploy WordCount application to azure via powershell
+----------------------------------------------------
 
 //Change the Cloud.xml by adding this endpoint details
 myazurecluster.australiaeast.cloudapp.azure.com:19000
 
-C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\Demos\Services\WordCount\WordCount\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
 
-Local browsing
-http://localhost:8081/WordCount/api/Count
+---------------------------------------------------------
+Navigate 
+--------------------------------------------------------
+Service Fabric Explorer
+http://myazurecluster.australiaeast.cloudapp.azure.com:19080/Explorer/index.html
+--------------
+Browe URL
+--------------
 http://myazurecluster.australiaeast.cloudapp.azure.com:8081/WordCount/api/Count
-
-Auto update
 http://myazurecluster.australiaeast.cloudapp.azure.com:8081/WordCount/
 
+------------
 Use fiddler
+------------
 Use the post verb and try 
-http://localhost:8081/WordCount/api/AddWord/test
+http://myazurecluster.australiaeast.cloudapp.azure.com:8081/WordCount/api/AddWord/test
 
 ---------
 DocumentDB
 ---------- 
+
 URL: https://azureactivationday2016.documents.azure.com:443/
 Key: roLNv9S2f7T1Ur1eeDTKJoAOxqMhX7MbOgQJ1lt2ancrafSpYj87BpUfxBGZ6305mKCJsbKTTbBmU6Hvke6kVw==
 
-----------
-SQL Database 
-----------
-Connection string: Server=tcp:msreadifydemo.database.windows.net,1433;Database=contactmanagerdemo;User ID=msdemouser@msreadifydemo;Password=Password123!;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+//Login to Azure Management Portal and show the documentdb interface
+// Look for 'DocumentDB Accounts'
+// go through azureactivationday2016 database
+
+//Example : 1
+//Show the Morals collection in Test Database
+//Query
+
+SELECT * 
+FROM Morals f
+Where f.id = "3a0703e3-0c67-4078-98b7-364b4d0e8e2a"
+
+SELECT *
+FROM Morals c
+WHERE Contains(c.name,'2nd request')
+
+--------------------
+Solution Walkthrough
+--------------------
+1. Demo Solution folder - C:\source\DevCamp\HOL\document-db\Demo
+
+2. Todo Solution folder - C:\source\DevCamp\HOL\build-web-app-using-documentdb\end\todo
+
+-----------------
+Linq query folder
+-----------------
+C:\source\DevCamp\HOL\document-db\Linqpad
 
 
 
 
+---------------------
+Appendix
+----------------------
+C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Local.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+http://localhost:8081/alphabetpartitions?lastname=desai
+
+
+
+C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\Demos\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop

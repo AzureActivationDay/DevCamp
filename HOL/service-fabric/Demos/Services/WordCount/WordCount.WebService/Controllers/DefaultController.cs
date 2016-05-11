@@ -78,7 +78,7 @@ namespace WordCount.WebService.Controllers
             sb.Append("<h1> Total:");
             sb.Append(totals.Aggregate<KeyValuePair<Int64RangePartitionInformation, long>, long>(0, (total, next) => next.Value + total));
             sb.Append("</h1>");
-            sb.Append("<table><tr><td>Partition ID</td><td>Key Range</td><td>Total</td></tr>");
+            sb.Append("<table><tr><td>Partition Ids</td><td>Key Range</td><td>Total</td></tr>");
             foreach (KeyValuePair<Int64RangePartitionInformation, long> partitionData in totals.OrderBy(partitionData => partitionData.Key.LowKey))
             {
                 sb.Append("<tr><td>");
