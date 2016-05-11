@@ -21,7 +21,7 @@ This lab includes instructions for the following tasks:
 
 To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This task describes how to create a DocumentDB account in the Azure preview management portal.
 
-1. Sign in to the [preview management portal](https://portal.azure.com/).
+1. Sign in to the [Management portal](https://portal.azure.com/).
 
 1. Click **NEW** and select **Data + storage**, then  **DocumentDB** in order to create a new DocumentDB account.  
 
@@ -35,15 +35,15 @@ To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This t
 
 	> _Creating a DocumentDB Account from the Azure Marketplace_
 
-	This will open the **New DocumentDB (Preview)** blade.
+	This will open the **New DocumentDB ** blade.
 
-1. In the **New DocumentDB (Preview)** blade, enter a name to identify the DocumentDB account in the **Id** box (e.g.: _your-documentdb_) and specify the geographic location where your DocumentDB account will be hosted (e.g.: _West US_). You can update other configuration options based on the information below. Then click **Create**.
+1. In the **New DocumentDB ** blade, enter a name to identify the DocumentDB account in the **Id** box (e.g.: _your-documentdb_) and specify the geographic location where your DocumentDB account will be hosted (e.g.: _West US_). You can update other configuration options based on the information below. Then click **Create**.
 
 	![Configuring the DocumentDB account](./images/new-documentdb-blade.png?raw=true)
 
 	_Configuring the DocumentDB account_
 
-	> **Note:** In the **New DocumentDB (Preview)** blade you can find the following options to be configured for a new DocumentDB account configuration:
+	> **Note:** In the **New DocumentDB ** blade you can find the following options to be configured for a new DocumentDB account configuration:
 
 	> - **Id**: Name that identifies the DocumentDB account. This value becomes the host name within the URI. The Id can contain only lowercase letters, numbers, and the '-' character, and must be between 3 and 50 characters long. Note that documents.azure.com is appended to the endpoint name you choose to craft your DocumentDB account endpoint.
 
@@ -106,7 +106,7 @@ Name the project _Todo_, choose a **Location** and click **OK**.
 
 1. Click **OK**.
 
-	![Configuring Microsoft Azure Website](images/configuring-microsoft-azure-website.png?raw=true)
+	![Configuring Microsoft Azure Website](images/configuring-microsoft-azure-website1.png?raw=true)
 
 	_Configuring Microsoft Azure Website_
 
@@ -133,13 +133,13 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 
 	> **Note:** While the service is still in preview, the NuGet package is marked as "Prerelease", so you need to enable the "Include Prerelease" option in order to be able to find the package.
 
-	![Installing the Microsoft Azure DocumentDB Client Libraries](images/installing-microsoft-azure-documentdb.png?raw=true)
+	![Installing the Microsoft Azure DocumentDB Client Libraries](images/installing-microsoft-azure-documentdb1.png?raw=true)
 	_Installing the Microsoft Azure DocumentDB Client Libraries_
 
 	> **Note:** Alternatively, you can use the Package Command Console to install the package by typing the following:
 
 	>  ```PowerShell
-	>  Install-Package Microsoft.Azure.Documents.Client -Pre
+	>  Install-Package Microsoft.Azure.DocumentDB 
 	>  ```
 
 1. You will be prompted to accept the license. Click **I Accept**.
@@ -503,7 +503,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Switch to the browser instance in which you have the Azure Preview Portal open. Verify that the DocumentDB account has been created by looking for a **Created DocumentDB** notification in the **Notifications** Hub. If there is one, click it. If not, wait until the account finishes creating and the notification appears.
 
-	![creation-succeeded-notification-hub](./images/creation-succeeded-notification-hub.png?raw=true "Creation succeeded in Notification Hub")
+	![creation-succeeded-notification-hub](./images/creation-succeeded-notification-hub1.png?raw=true "Creation succeeded in Notification Hub")
 
 	_Creation succeeded in Notification Hub_
 
@@ -511,7 +511,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	> **Note:** The default consistency of the DocumentDB account will be set to Session. You can adjust the default consistency setting via the [preview management portal](https://portal.azure.com/#gallery/Microsoft.DocumentDB).
 
-	![The new DocumentDB account has been created](./images/new-documentdb-account-created.png?raw=true)
+	![The new DocumentDB account has been created](./images/new-documentdb-account-created1.png?raw=true)
 
 	_The new DocumentDB account has been created_
 
@@ -521,13 +521,13 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	> _Accessing the DocumentDB accounts from the Browse blade_
 
-	> ![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
+	> ![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account1.png?raw=true)
 
 	> _Accessing the DocumentDB account just created_
 
 1. Now, click the **KEYS** button to open the **Keys** blade. Copy the endpoint **URI** and paste the value in the **Web.config** file open in Visual Studio, in place of the **URI** placeholder.
 
-	![Retrieving the keys of the DocumentDB account just created](./images/copying-your-documentdb-keys.png?raw=true)
+	![Retrieving the keys of the DocumentDB account just created](./images/copying-your-documentdb-keys1.png?raw=true)
 
 	_Retrieving the keys of the DocumentDB account just created_
 

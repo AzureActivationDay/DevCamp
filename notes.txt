@@ -1,0 +1,54 @@
+Ensure SDK with VS2015 templates are installed.
+Create a word count service locally
+Create cluster on windows azure
+Deploy it on to the 
+
+
+
+
+
+[2.Deploy an application](service-fabric-deploy-remove-applications.md)
+
+[3.Application upgrade](service-fabric-application-upgrade.md)
+
+C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions
+
+
+//Connect to localhost
+Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
+
+//Deploying the application
+C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Local.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+
+Example:1
+http://localhost:8081/alphabetpartitions?lastname=desai
+
+
+
+Deploy on Azure
+
+//Change the Cloud.xml by adding this endpoint details
+myazurecluster.australiaeast.cloudapp.azure.com:19000
+
+
+Connect-ServiceFabricCluster -ConnectionEndpoint myazurecluster.australiaeast.cloudapp.azure.com:19000
+
+C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\AlphabetPartitions\AlphabetPartitions\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+
+Service Fabric Explorer
+http://myazurecluster.australiaeast.cloudapp.azure.com:19080/Explorer/index.html
+
+//Deploy another application to Azure
+
+//Change the Cloud.xml by adding this endpoint details
+myazurecluster.australiaeast.cloudapp.azure.com:19000
+
+C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\pkg\Debug -PublishProfileFile C:\source\DevCamp\HOL\service-fabric\code\Services\WordCount\WordCount\PublishProfiles\Cloud.xml -DeployOnly:$false -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior None -OverwriteBehavior SameAppTypeAndVersion -ErrorAction Stop
+
+Local browsing
+http://localhost:8081/WordCount/api/Count
+
+Use fiddler
+Use the post verb and try 
+http://localhost:8081/WordCount/api/AddWord/test
+
