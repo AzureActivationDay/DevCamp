@@ -11,12 +11,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using Microsoft.Owin;
 using Overview.Models;
 using Database = Microsoft.Azure.Documents.Database;
+using Microsoft.Azure.Documents;
 
 namespace Overview.Repositories
 {
@@ -199,7 +199,7 @@ namespace Overview.Repositories
         public async Task<IEnumerable<Values>> GetAll(Expression<Func<Values,int,bool>> valueExpression)
         {
             var query = _documentClient.CreateDocumentQuery<Values>(
-                       GetCollectionSelfLink(), null)
+                       GetCollectionSelfLink())
                        .Where(valueExpression)
                        .AsDocumentQuery();
 
