@@ -13,8 +13,8 @@ async Task Main()
 {
 
          #region "keys"
-	 string endpointUrl = "https://azureactivationday2016.documents.azure.com:443/";
-     string authorizationKey = "roLNv9S2f7T1Ur1eeDTKJoAOxqMhX7MbOgQJ1lt2ancrafSpYj87BpUfxBGZ6305mKCJsbKTTbBmU6Hvke6kVw==";
+	 string endpointUrl = "";
+     string authorizationKey = "";
     #endregion
        using (DocumentClient client = new DocumentClient(new Uri(endpointUrl), authorizationKey))
        {

@@ -15,6 +15,6 @@
                                     StoreLocation="CurrentUser"
                                     StoreName="My" />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="myazurecluster.australiaeast.cloudapp.azure.com:19000" />
+  <ClusterConnectionParameters ConnectionEndpoint="" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
 </PublishProfile>

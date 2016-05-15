@@ -1,25 +1,89 @@
+------------------------------------
+Azure Activation Day : URL Shortcut
+-----------------------------------
+
+http://tinyurl.com/azureActivationday2016
+
+API App: Automatic client SDK generation using Swagger
+
+----------------
+1. Key Note Demo:-
+---------------
+Azure portal
+
 ------------------
-Azure Web App Demo
+2.Azure Web App Demo
 ----------
 SQL Database 
 
 Connection string: 
 Server=tcp:msreadifydemo.database.windows.net,1433;Database=contactmanagerdemo;User ID=msdemouser@msreadifydemo;Password=Password123!;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
--------------------
-Contact Manager URL
-------------------
-
-Solution: C:\source\DevCamp\HOL\get-started-with-websites-and-asp-net\EndSolution\ContactManager
+   
+   Contact Manager URL
+   Solution: C:\source\DevCamp\HOL\get-started-with-websites-and-asp-net\EndSolution\ContactManager
 
 //if SQL server firewall blocks you
 //Ensure Clifton's ip address is included in the "SQL Servers" -> Settings->Firewall
 
-http://contactmanager4855.azurewebsites.net/
+http://contactmanager4856azurewebsites.net/
+
+---------
+3. SQL Database & Document DB
+---------- 
+
+------------
+SQL Database
+------------
+
+
+------------
+ DocumentDB
+-------------
+
+URL: https://azureactivationday.documents.azure.com:443/
+Key: u9urbK6QFzN3xdDJzCxjMSgMlx1OJn0dA6wrjGXLjE5JqC99S8kMF1wD1akWGFua9jAE0IDLvaaO53k6Mqortg==
+
+DocumentDB Overview Demo:-
+C:\source\DevCamp\HOL\document-db\Demo
+
+
+
+
+//Login to Azure Management Portal and show the documentdb interface
+// Look for 'DocumentDB Accounts'
+// go through azureactivationday2016 database
+
+//Example : 1
+//Show the Morals collection in Test Database
+//Query
+
+SELECT * 
+FROM Morals f
+Where f.id = "3a0703e3-0c67-4078-98b7-364b4d0e8e2a"
+
+SELECT *
+FROM Morals c
+WHERE Contains(c.name,'2nd request')
+
+--------------------
+Solution Walkthrough
+--------------------
+1. Demo Solution folder - C:\source\DevCamp\HOL\document-db\Demo
+
+2. Todo Solution folder - C:\source\DevCamp\HOL\build-web-app-using-documentdb\end\todo
+
+-----------------
+Linq query folder
+-----------------
+C:\source\DevCamp\HOL\document-db\Linqpad
+
+
+
 
 
 -------------------
-Service Fabric Demo
+4. Service Fabric Demo
 --------------------
 Service Fabric Cluster:- 
     Myazurecluster.australiaeast.cloudapp.azure.com
@@ -112,43 +176,6 @@ Use fiddler
 ------------
 Use the post verb and try 
 http://myazurecluster.australiaeast.cloudapp.azure.com:8081/WordCount/api/AddWord/test
-
----------
-DocumentDB
----------- 
-
-URL: https://azureactivationday2016.documents.azure.com:443/
-Key: roLNv9S2f7T1Ur1eeDTKJoAOxqMhX7MbOgQJ1lt2ancrafSpYj87BpUfxBGZ6305mKCJsbKTTbBmU6Hvke6kVw==
-
-
-//Login to Azure Management Portal and show the documentdb interface
-// Look for 'DocumentDB Accounts'
-// go through azureactivationday2016 database
-
-//Example : 1
-//Show the Morals collection in Test Database
-//Query
-
-SELECT * 
-FROM Morals f
-Where f.id = "3a0703e3-0c67-4078-98b7-364b4d0e8e2a"
-
-SELECT *
-FROM Morals c
-WHERE Contains(c.name,'2nd request')
-
---------------------
-Solution Walkthrough
---------------------
-1. Demo Solution folder - C:\source\DevCamp\HOL\document-db\Demo
-
-2. Todo Solution folder - C:\source\DevCamp\HOL\build-web-app-using-documentdb\end\todo
-
------------------
-Linq query folder
------------------
-C:\source\DevCamp\HOL\document-db\Linqpad
-
 
 
 
