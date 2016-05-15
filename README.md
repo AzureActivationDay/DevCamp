@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Azure Readiness: DevCamp</title>
+      <title>Azure Readiness: Azure Activation Day</title>
 	  <link rel="stylesheet" href="style.css">
    </head>
    <body id="home">
@@ -15,7 +15,7 @@
             </p>
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title">Suggested agenda for a one day Azure Camp with Hands On Labs (HOLs)</h3>
+               <h3 class="panel-title">Agenda for Azure Activation day</h3>
             </div>
             <div class="panel-body">
                <table class="table table-bordered table-hover">
